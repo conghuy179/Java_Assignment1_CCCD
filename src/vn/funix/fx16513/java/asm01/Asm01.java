@@ -25,270 +25,244 @@ public class Asm01 {
     }
 
     public static String getBirthPlace(String cccd) {
-        String quequan;
-        String matinh = cccd.substring(0, 3);
-        switch (matinh) {
+        String birthPlace;
+        String birthCode = cccd.substring(0, 3);
+        switch (birthCode) {
             case "001":
-                quequan = "Hanoi";
+                birthPlace = "Hanoi";
                 break;
             case "002":
-                quequan = "Ha Giang";
+                birthPlace = "Ha Giang";
                 break;
             case "004":
-                quequan = "Cao Bang";
+                birthPlace = "Cao Bang";
                 break;
             case "006":
-                quequan = "Bac Kan";
+                birthPlace = "Bac Kan";
                 break;
             case "008":
-                quequan = "Tuyen Quang";
+                birthPlace = "Tuyen Quang";
                 break;
             case "010":
-                quequan = "Lao Cai";
+                birthPlace = "Lao Cai";
                 break;
             case "011":
-                quequan = "Dien Bien";
+                birthPlace = "Dien Bien";
                 break;
             case "012":
-                quequan = "Lai Chau";
+                birthPlace = "Lai Chau";
                 break;
             case "014":
-                quequan = "Son La";
+                birthPlace = "Son La";
                 break;
             case "015":
-                quequan = "Yen Bai";
+                birthPlace = "Yen Bai";
                 break;
             case "017":
-                quequan = "Hoa Binh";
+                birthPlace = "Hoa Binh";
                 break;
             case "019":
-                quequan = "Thai Nguyen";
+                birthPlace = "Thai Nguyen";
                 break;
             case "020":
-                quequan = "Lang Son";
+                birthPlace = "Lang Son";
                 break;
             case "022":
-                quequan = "Quang Ninh";
+                birthPlace = "Quang Ninh";
                 break;
             case "024":
-                quequan = "Bac Giang";
+                birthPlace = "Bac Giang";
                 break;
             case "025":
-                quequan = "Phu Tho";
+                birthPlace = "Phu Tho";
                 break;
             case "026":
-                quequan = "Vinh Phuc";
+                birthPlace = "Vinh Phuc";
                 break;
             case "027":
-                quequan = "Bac Ninh";
+                birthPlace = "Bac Ninh";
                 break;
             case "030":
-                quequan = "Hai Duong";
+                birthPlace = "Hai Duong";
                 break;
             case "031":
-                quequan = "Hai Phong";
+                birthPlace = "Hai Phong";
                 break;
             case "033":
-                quequan = "Hung Yen";
+                birthPlace = "Hung Yen";
                 break;
             case "034":
-                quequan = "Thai Binh";
+                birthPlace = "Thai Binh";
                 break;
             case "035":
-                quequan = "Ha Nam";
+                birthPlace = "Ha Nam";
                 break;
             case "036":
-                quequan = "Nam Dinh";
+                birthPlace = "Nam Dinh";
                 break;
             case "037":
-                quequan = "Ninh Binh";
+                birthPlace = "Ninh Binh";
                 break;
             case "038":
-                quequan = "Thanh Hoa";
+                birthPlace = "Thanh Hoa";
                 break;
             case "040":
-                quequan = "Nghe An";
+                birthPlace = "Nghe An";
                 break;
             case "042":
-                quequan = "Ha Tinh";
+                birthPlace = "Ha Tinh";
                 break;
             case "044":
-                quequan = "Quang Binh";
+                birthPlace = "Quang Binh";
                 break;
             case "045":
-                quequan = "Quang Tri";
+                birthPlace = "Quang Tri";
                 break;
             case "046":
-                quequan = "Thua Thien Hue";
+                birthPlace = "Thua Thien Hue";
                 break;
             case "048":
-                quequan = "Da Nang";
+                birthPlace = "Da Nang";
                 break;
             case "049":
-                quequan = "Quang Nam";
+                birthPlace = "Quang Nam";
                 break;
             case "051":
-                quequan = "Quang Ngai";
+                birthPlace = "Quang Ngai";
                 break;
             case "052":
-                quequan = "Binh Dinh";
+                birthPlace = "Binh Dinh";
                 break;
             case "054":
-                quequan = "Phu Yen";
+                birthPlace = "Phu Yen";
                 break;
             case "056":
-                quequan = "Khanh Hoa";
+                birthPlace = "Khanh Hoa";
                 break;
             case "058":
-                quequan = "Ninh Thuan";
+                birthPlace = "Ninh Thuan";
                 break;
             case "060":
-                quequan = "Binh Thuan";
+                birthPlace = "Binh Thuan";
                 break;
             case "062":
-                quequan = "Kon Tum";
+                birthPlace = "Kon Tum";
                 break;
             case "064":
-                quequan = "Gia Lai";
+                birthPlace = "Gia Lai";
                 break;
             case "066":
-                quequan = "Dak Lak";
+                birthPlace = "Dak Lak";
                 break;
             case "067":
-                quequan = "Dak Nong";
+                birthPlace = "Dak Nong";
                 break;
             case "068":
-                quequan = "Lam Dong";
+                birthPlace = "Lam Dong";
                 break;
             case "070":
-                quequan = "Binh Phuoc";
+                birthPlace = "Binh Phuoc";
                 break;
             case "072":
-                quequan = "Tay Ninh";
+                birthPlace = "Tay Ninh";
                 break;
             case "074":
-                quequan = "Binh Duong";
+                birthPlace = "Binh Duong";
                 break;
             case "075":
-                quequan = "Dong Nai";
+                birthPlace = "Dong Nai";
                 break;
             case "077":
-                quequan = "Ba Ria - Vung Tau";
+                birthPlace = "Ba Ria - Vung Tau";
                 break;
             case "079":
-                quequan = "Ho Chi Minh";
+                birthPlace = "Ho Chi Minh";
                 break;
             case "080":
-                quequan = "Long An";
+                birthPlace = "Long An";
                 break;
             case "082":
-                quequan = "Tien Giang";
+                birthPlace = "Tien Giang";
                 break;
             case "083":
-                quequan = "Ben Tre";
+                birthPlace = "Ben Tre";
                 break;
             case "084":
-                quequan = "Tra Vinh";
+                birthPlace = "Tra Vinh";
                 break;
             case "086":
-                quequan = "Vinh Long";
+                birthPlace = "Vinh Long";
                 break;
             case "087":
-                quequan = "Dong Thap";
+                birthPlace = "Dong Thap";
                 break;
             case "089":
-                quequan = "An Giang";
+                birthPlace = "An Giang";
                 break;
             case "091":
-                quequan = "Kien Giang";
+                birthPlace = "Kien Giang";
                 break;
             case "092":
-                quequan = "Can Tho";
+                birthPlace = "Can Tho";
                 break;
             case "093":
-                quequan = "Hau Giang";
+                birthPlace = "Hau Giang";
                 break;
             case "094":
-                quequan = "Soc Trang";
+                birthPlace = "Soc Trang";
                 break;
             case "095":
-                quequan = "Bac Lieu";
+                birthPlace = "Bac Lieu";
                 break;
             case "096":
-                quequan = "Ca Mau";
+                birthPlace = "Ca Mau";
                 break;
             default:
-                quequan = "";
+                birthPlace = "";
                 break;
         }
-        return quequan;
+        return birthPlace;
     }
 
-    public static String getGender(String cccd, int ageNumber) {
-        String gioitinh;
-        switch (ageNumber) {
-            case 0:
-                gioitinh = "nam";
+    public static String getGender(int ageCode) {
+        String gender;
+        switch (ageCode) {
+            case 0: case 2: case 4: case 6: case 8:
+                gender = "nam";
                 break;
-            case 1:
-                gioitinh = "nu";
-                break;
-            case 2:
-                gioitinh = "nam";
-                break;
-            case 3:
-                gioitinh = "nu";
-                break;
-            case 4:
-                gioitinh = "nam";
-                break;
-            case 5:
-                gioitinh = "nu";
-                break;
-            case 6:
-                gioitinh = "nam";
-                break;
-            case 7:
-                gioitinh = "nu";
-                break;
-            case 8:
-                gioitinh = "nam";
-                break;
-            case 9:
-                gioitinh = "nu";
+            case 1: case 3: case 5: case 7: case 9:
+                gender = "nu";
                 break;
             default:
-                gioitinh = "";
+                gender = "";
                 break;
         }
-        return gioitinh;
+        return gender;
     }
 
-    public static int getYearOfBirth(String cccd, int ageCode, int age) {
-        int theky;
-
+    public static int getYearOfBirth(int ageCode, int age) {
+        int century;
         switch (ageCode) {
             case 0: case 1:
-                theky = 1900;
+                century = 1900;
                 break;
             case 2: case 3:
-                theky = 2000;
+                century = 2000;
                 break;
             case 4: case 5:
-                theky = 2100;
+                century = 2100;
                 break;
             case 6: case 7:
-                theky = 2200;
+                century = 2200;
                 break;
             case 8: case 9:
-                theky = 2300;
+                century = 2300;
                 break;
             default:
-                theky = 0;
+                century = 0;
                 break;
         }
-
-        return theky + age;
+        return century + age;
     }
 
     public static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
@@ -388,8 +362,8 @@ public class Asm01 {
                     } else if (selection == 2) {
                         int ageNumber = Integer.parseInt(cccd.substring(3, 4));
                         int yearAge = Integer.parseInt(cccd.substring(4, 6));
-                        gioiTinh = getGender(cccd, ageNumber);
-                        namSinh = getYearOfBirth(cccd, ageNumber, yearAge);
+                        gioiTinh = getGender(ageNumber);
+                        namSinh = getYearOfBirth(ageNumber, yearAge);
                         System.out.println("Ban da chon " + selection);
                         System.out.println("Gioi tinh: " + gioiTinh + " | " + namSinh);
                     } else if (selection == 3) {
