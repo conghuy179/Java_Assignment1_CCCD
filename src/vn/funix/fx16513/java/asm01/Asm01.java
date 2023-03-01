@@ -24,6 +24,12 @@ public class Asm01 {
         return result;
     }
 
+    /**
+     * Ham hien thi thong tin tinh thanh
+     *
+     * @param cccd Ma can cuoc cong dan
+     * @return Noi sinh neu birthcode thuoc bang mo ta, neu ko thuoc bang thi return empty
+     */
     public static String getBirthPlace(String cccd) {
         String birthPlace;
         String birthCode = cccd.substring(0, 3);
@@ -224,6 +230,12 @@ public class Asm01 {
         return birthPlace;
     }
 
+    /**
+     * Ham hien thi thong tin gioi tinh
+     *
+     * @param ageCode Ma tuoi (chu so thu 4 trong cccd)
+     * @return Gioi tinh nam hoac nu neu ageCode thuoc bang mo ta, neu ko thuoc bang thi return empty
+     */
     public static String getGender(int ageCode) {
         String gender;
         switch (ageCode) {
@@ -239,6 +251,13 @@ public class Asm01 {
         }
         return gender;
     }
+
+    /**
+     * Ham hien thi nam sinh
+     * @param ageCode Ma tuoi (chu so thu 4 trong cccd)
+     * @param age Ma nam sinh (chu so thu 5 va 6 trong cccd)
+     * @return Nam sinh (century + age)
+     */
 
     public static int getYearOfBirth(int ageCode, int age) {
         int century;
@@ -265,10 +284,20 @@ public class Asm01 {
         return century + age;
     }
 
-    public static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
-
     /**
-     * Sinh ma bao mat co ban
+     * Hang so chua cac chu so de ho tro tao ma bao mat nang cao
+     */
+    public static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvxyz";
+    /**
+     * Hang so chua ten author
+     */
+    public static final String AUTHOR = "FX16513";
+    /**
+     * Hang so chua version
+     */
+    public static final String VERSION = "v1.0.0";
+    /**
+     * Ham sinh ma bao mat co ban
      *
      * @return ma bao mat co ban
      */
@@ -278,6 +307,11 @@ public class Asm01 {
         return String.valueOf(authCode);
     }
 
+    /**
+     * Ham sinh ma bao mat nang cao
+     *
+     * @return Ma bao mat nang cao
+     */
     public static String generateAdvancedAuthCode() {
         Random random = new Random();
 
@@ -289,35 +323,86 @@ public class Asm01 {
         return String.valueOf(randomChars);
     }
 
-    public static void main(String[] args) {
+    /**
+     * Ham hien thi menu chuong trinh chinh
+     */
+    public static void menu(String AUTHOR, String VERSION) {
         System.out.println("+----------+-------------------------+----------+");
-        System.out.println("| NGAN HANG SO | FX16513@v1.0.0                 |");
+        System.out.println("| NGAN HANG SO | " + AUTHOR + "@" + VERSION + "                 |");
         System.out.println("+----------+-------------------------+----------+");
         System.out.println("| 1. NHAP CCCD                                  |");
         System.out.println("| 0. Thoat                                      |");
         System.out.println("+----------+-------------------------+----------+");
+    }
 
+    /**
+     * Ham hien thi menu chuong trinh 2 (Menu sau khi nhap cccd)
+     */
+    public static void menu2() {
+        System.out.println("| 1. Kiem tra noi sinh");
+        System.out.println("| 2. Kiem tra tuoi, gioi tinh");
+        System.out.println("| 3. Kiem tra so ngau nhien");
+        System.out.println("| 0. Thoat");
+    }
+
+    /**
+     * Ham hien thi menu khi nhap ma xac thuc:
+     */
+    public static void menuForAuthCode() {
+        System.out.println("| 1. NHAP MA XAC THUC CO BAN                                  |");
+        System.out.println("| 2. NHAP MA XAC THUC NANG CAO                                |");
+    }
+    /**
+     * Ham main: Dieu khien luong chinh cua chuong trinh
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        menu(AUTHOR, VERSION);
         Scanner sc = new Scanner(System.in);
+        //Khai bao lua chon, cccd, noi sinh, gioi tinh va nam sinh
         int selection;
         String cccd;
 
-        String noiSinh;
-        String gioiTinh;
-        int namSinh;
+        String birthPlace;
+        String gender;
+        int yearOfBirth;
         /*
         neu nhap 1:
         Hien random number de user nhap
-            Nhap sai: hien dong chu + yeu cau nhap lai
+            Nhap sai: hien thong bao nhap sai + yeu cau nhap lai
             Nhap dung: duoc nhap cccd
          */
 
         do {
             selection = sc.nextInt();
-
             if (selection == 1) {
-                // In ma bao mat
-                String expectedAuthCode = generateBasicAuthCode();
                 System.out.println("Chuc nang: " + selection);
+
+                // mo ra menu cho user lua chon kieu xac thuc
+                // Neu chon 1: Nhap ma xac thuc co ban
+                // Neu chon 2: Nhap ma xac thuc nang cao
+                // Neu chon khac 1 va 2: Hien lai menuForAuthCode
+                int selectionForAuthCode;
+                String expectedAuthCode;
+                do {
+                    menuForAuthCode();
+                    selectionForAuthCode = sc.nextInt();
+                    expectedAuthCode = null;
+
+                    if (selectionForAuthCode == 1) {
+                        expectedAuthCode = generateBasicAuthCode();
+                        System.out.println("Nhap ma xac thuc co ban:");
+                    } else if (selectionForAuthCode == 2) {
+                        expectedAuthCode = generateAdvancedAuthCode();
+                        System.out.println("Nhap ma xac thuc nang cao:");
+                    }
+                    else {
+                        System.out.println("Ban da chon sai. Yeu cau chon 1 hoac 2.");
+                    }
+                }
+                    while (selectionForAuthCode != 1 && selectionForAuthCode != 2);
+
                 System.out.println("Nhap ma xac thuc: " + expectedAuthCode);
 
                 String authCode;
@@ -329,7 +414,7 @@ public class Asm01 {
                     }
                 } while (!expectedAuthCode.equals(authCode));
 
-                // Neu nhap dung rm:
+                // Neu nhap dung ma bao mat:
                 // Nhap cccd:
                 System.out.println("Nhap so CCCD:");
                 // kiem tra dieu kien
@@ -338,6 +423,7 @@ public class Asm01 {
                     cccd = sc.next();
                     kiemtraCccd = isValidCccd(cccd);
                     System.out.println("Ma cccd la: " + cccd);
+                    // Neu ma CCCD khong hop le:
                     if (!kiemtraCccd) {
                         if ("No".equals(cccd)) {
                             // Neu nhap No thi thoat chuong trinh
@@ -350,36 +436,28 @@ public class Asm01 {
 
                 //Luu CCCD vao 1, 2, 3
                 do {
-                    System.out.println("| 1. Kiem tra noi sinh");
-                    System.out.println("| 2. Kiem tra tuoi, gioi tinh");
-                    System.out.println("| 3. Kiem tra so ngau nhien");
-                    System.out.println("| 0. Thoat");
+                    menu2();
                     selection = sc.nextInt();
                     if (selection == 1) {
-                        noiSinh = getBirthPlace(cccd);
+                        birthPlace = getBirthPlace(cccd);
                         System.out.println("Ban da chon " + selection);
-                        System.out.println("Noi Sinh: " + noiSinh);
+                        System.out.println("Noi Sinh: " + birthPlace);
                     } else if (selection == 2) {
                         int ageNumber = Integer.parseInt(cccd.substring(3, 4));
                         int yearAge = Integer.parseInt(cccd.substring(4, 6));
-                        gioiTinh = getGender(ageNumber);
-                        namSinh = getYearOfBirth(ageNumber, yearAge);
+                        gender = getGender(ageNumber);
+                        yearOfBirth = getYearOfBirth(ageNumber, yearAge);
                         System.out.println("Ban da chon " + selection);
-                        System.out.println("Gioi tinh: " + gioiTinh + " | " + namSinh);
+                        System.out.println("Gioi tinh: " + gender + " | " + yearOfBirth);
                     } else if (selection == 3) {
                         String sixRandomNumber = cccd.substring(6, 12);
                         System.out.println("Ban da chon " + selection);
                         System.out.println("So ngau nhien: " + sixRandomNumber);
                     }
                 } while (selection != 0);
-
+            // Neu user chon so khac 1 va 0 thi hien lai Menu ban dau
             } else if (selection != 0) {
-                System.out.println("+----------+-------------------------+----------+");
-                System.out.println("| NGAN HANG SO | FX16513@v1.0.0                 |");
-                System.out.println("+----------+-------------------------+----------+");
-                System.out.println("| 1. NHAP CCCD                                  |");
-                System.out.println("| 0. Thoat                                      |");
-                System.out.println("+----------+-------------------------+----------+");
+                menu(AUTHOR, VERSION);
             }
         } while (selection != 0);
     }
