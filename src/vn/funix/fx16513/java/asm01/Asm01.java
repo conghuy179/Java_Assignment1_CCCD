@@ -422,7 +422,6 @@ public class Asm01 {
                 do {
                     cccd = sc.next();
                     kiemtraCccd = isValidCccd(cccd);
-                    System.out.println("Ma cccd la: " + cccd);
                     // Neu ma CCCD khong hop le:
                     if (!kiemtraCccd) {
                         if ("No".equals(cccd)) {
@@ -432,6 +431,7 @@ public class Asm01 {
                             System.out.println("So CCCD khong hop le. Vui long nhap lai hoac 'No' de thoat:");
                         }
                     }
+                    System.out.println("Ma cccd la: " + cccd);
                 } while (!kiemtraCccd);
 
                 //Luu CCCD vao 1, 2, 3

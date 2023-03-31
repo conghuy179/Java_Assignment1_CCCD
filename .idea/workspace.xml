@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02b28e13-a9a4-4376-abc7-bf2ebfc704e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/Asm02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/models/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/models/Bank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/models/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/models/Driver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm01/Asm01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm01/Asm01.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -19,7 +33,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2M8nCzxspmVAEXx0KpA0ffLigjH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,10 +44,10 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Desktop/Java_Assignment1_CCCD/PRO192x_Project_fx16513.iml&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Documents/CODE/Java/Project/test2&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Asm02">
     <configuration name="Asm01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="vn.funix.fx16513.java.asm01.Asm01" />
       <module name="PRO192x_Project_fx16513" />
@@ -45,8 +61,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Asm02" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vn.funix.fx16513.java.asm02.Asm02" />
+      <module name="PRO192x_Project_fx16513" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vn.funix.fx16513.java.asm02.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Asm02" />
         <item itemvalue="Application.Asm01" />
       </list>
     </recent_temporary>
