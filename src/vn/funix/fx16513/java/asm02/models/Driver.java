@@ -3,6 +3,16 @@ package vn.funix.fx16513.java.asm02.models;
 import java.util.Scanner;
 
 public class Driver {
+    /**
+     * Cac field cua Driver, bao gom:
+     * 6 selection cho customers, thuc hien 6 muc dich tren Menu.
+     * Field Author va Version khi hien Menu.
+     * So tien toi thieu khi nap them tien vao tai khoan.
+     * Scanner sc de customers nhap thong tin.
+     * Class bank de thuc hien tham so.
+     * Selection de luu lua chon cua khach hang.
+     *
+     */
     public static final int CHOICE_ADD_CUSTOMER = 1;
     public static final int CHOICE_ADD_ACCOUNT_CUSTOMER = 2;
     public static final int CHOICE_SHOW_ACCOUNT_CUSTOMER = 3;
@@ -13,15 +23,25 @@ public class Driver {
     public static final String VERSION = "FX16513";
     public static final double MIN_ACCOUNT_BALANCE = 50000;
     private Scanner sc;
-    private String version;
     private Bank bank;
     private int selection;
 
+    /**
+     * Constructor cua Driver
+     * @param bank: Class Bank
+     * Gan parameter bank vao field bank cua Driver.
+     * Gan scanner vao field sc cua Driver, cho phep customer nhap thong tin.
+     */
     public Driver(Bank bank) {
         this.bank = bank;
         this.sc = new Scanner(System.in).useDelimiter("\n");
     }
 
+    /**
+     * Ham in Menu.
+     * @param AUTHOR ten tac gia, o day la Phan Cong Huy.
+     * @param VERSION Ten phien ban, o day la ma SV: FX16513.
+     */
     public void printMenu(String AUTHOR, String VERSION) {
         System.out.println("+----------+-------------------------+----------+");
         System.out.println("| NGAN HANG SO | " + AUTHOR + "@" + VERSION + "           |");
@@ -36,6 +56,12 @@ public class Driver {
         System.out.println("Chuc nang: ");
     }
 
+    /**
+     * Ham kiem tra day so hop le (su dung cho ca CCCD va ma so tai khoan).
+     * @param s: day so can kiem tra.
+     * @param len: Do dai quy dinh.
+     * @return Neu ko thoa man, return false. Neu thoa man, return true.
+     */
     public static boolean isValidNumericString(String s, int len) {
         boolean result = true;
         if (s.length() != len) {
@@ -50,15 +76,27 @@ public class Driver {
         return result;
     }
 
+    /**
+     * Ham kiem tra CCCD co hop le hay khong bang cach su dung ham isValidNumericString voi bien len: 12.
+     * @param cccd: ma CCCD can kiem tra.
+     * @return Neu ko thoa man, return false. Neu thoa man, return true.
+     */
     public static boolean isValidCccd(String cccd) {
         return isValidNumericString(cccd, 12);
     }
 
+    /**
+     * Ham kiem tra ma so tai khoan co hop le hay khong bang cach su dung ham isValidNumericString voi bien len: 6.
+     * @param accountNumber: Ma so tai khoan can kiem tra.
+     * @return Neu ko thoa man, return false. Neu thoa man, return true.
+     */
     public static boolean isValidAccountNumber(String accountNumber) {
         return isValidNumericString(accountNumber, 6);
     }
 
-
+    /**
+     * Ham them khach hang.
+     */
     private void runAddCustomer() {
         // Nhap ten customer
         System.out.println("Nhap ten khach hang: ");
@@ -81,6 +119,9 @@ public class Driver {
         bank.addCustomer(customer);
     }
 
+    /**
+     * Ham them tai khoan cho khach hang.
+     */
     private void runAddAccountForCustomer() {
         String cccd;
         boolean isValidId;
@@ -121,11 +162,19 @@ public class Driver {
         Account newAccount = new Account(accountNumber, balance);
         bank.addAccount(cccd, newAccount);
     }
+
+    /**
+     * Ham hien thi tai khoan cua khach hang.
+     */
     private void runShowAccountCustomer() {
         for (int i = 0; i < bank.getCustomers().size(); i++) {
             bank.getCustomers().get(i).displayInformation();
         }
     }
+
+    /**
+     * Ham tim kiem khach hang theo CCCD.
+     */
     private void runFindCustomerFromId() {
         System.out.println("Tim kiem khach hang theo CCCD.");
         String cccd;
@@ -147,6 +196,10 @@ public class Driver {
         Customer customer = bank.searchCustomer(cccd);
         customer.displayInformation();
     }
+
+    /**
+     * Ham tim kiem khach hang theo ten.
+     */
     private void runFindCustomerFromName() {
         String customerName;
         String customerNameLowerCase;
@@ -160,6 +213,9 @@ public class Driver {
             }
     }
 
+    /**
+     * Ham tong hop va thuc hien tat ca yeu cau de bai.
+     */
     public void run() {
         do {
             printMenu(AUTHOR, VERSION);
