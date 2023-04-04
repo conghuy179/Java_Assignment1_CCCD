@@ -53,6 +53,7 @@ public class Account {
     }
 
     /**
+     * TIEU CHI 3:
      * Ham kiem tra tai khoan co phai premium hay khong
      * @return: Neu so du tai khoan tren 10_000_000 VND, return true. Neu khong, return false.
      */

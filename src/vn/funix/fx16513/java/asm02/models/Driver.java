@@ -5,12 +5,13 @@ import java.util.Scanner;
 public class Driver {
     /**
      * Cac field cua Driver, bao gom:
-     * 6 selection cho customers, thuc hien 6 muc dich tren Menu.
-     * Field Author va Version khi hien Menu.
-     * So tien toi thieu khi nap them tien vao tai khoan.
-     * Scanner sc de customers nhap thong tin.
-     * Class bank de thuc hien tham so.
-     * Selection de luu lua chon cua khach hang.
+     *      6 selection cho customers, thuc hien 6 muc dich tren Menu.
+     *      Author va Version khi hien Menu.
+     *      So tien toi thieu khi nap them tien vao tai khoan.
+     * Field:
+     * Scanner sc: Scanner de input du lieu cho khach hang *TIEU CHI 2*.
+     * Bank bank: Tham so Bank.
+     * Selection: luu lua chon cua khach hang.
      *
      */
     public static final int CHOICE_ADD_CUSTOMER = 1;
@@ -173,9 +174,10 @@ public class Driver {
     }
 
     /**
+     * TIEU CHI 6:
      * Ham tim kiem khach hang theo CCCD.
      */
-    private void runFindCustomerFromId() {
+    private void searchCustomerByCCCD() {
         System.out.println("Tim kiem khach hang theo CCCD.");
         String cccd;
         boolean isValidId;
@@ -198,9 +200,10 @@ public class Driver {
     }
 
     /**
+     * TIEU CHI 2 NANG CAO:
      * Ham tim kiem khach hang theo ten.
      */
-    private void runFindCustomerFromName() {
+    private void searchCustomerByName() {
         String customerName;
         String customerNameLowerCase;
             System.out.println("Nhap ten khach hang: ");
@@ -227,9 +230,9 @@ public class Driver {
             } else if (selection == CHOICE_SHOW_ACCOUNT_CUSTOMER) {
                 runShowAccountCustomer();
             } else if (selection == CHOICE_FIND_CUSTOMER_FROM_ID) {
-                runFindCustomerFromId();
+                searchCustomerByCCCD();
             } else if (selection == CHOICE_FIND_CUSTOMER_FROM_NAME) {
-                runFindCustomerFromName();
+                searchCustomerByName();
             }
         } while (selection != CHOICE_CLOSE_APP);
     }

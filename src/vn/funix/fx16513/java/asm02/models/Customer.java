@@ -74,6 +74,7 @@ public class Customer extends User {
     }
 
     /**
+     * TIEU CHI 5:
      * Ham tinh toan tong so du cua khach hang.
      * @return Tong so du tu tat ca tai khoan.
      */

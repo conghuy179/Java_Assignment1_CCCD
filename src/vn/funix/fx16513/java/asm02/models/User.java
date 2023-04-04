@@ -29,6 +29,7 @@ public class User {
     }
 
     /**
+     * TIEU CHI 1 NANG CAO:
      * Ham set CCCD (chi cap nhat khi CCCD hop le).
      * @param customerID: CCCD.
      */

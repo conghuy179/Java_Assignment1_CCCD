@@ -60,6 +60,7 @@ public class Bank {
     }
 
     /**
+     * TIEU CHI 4:
      * Ham tim khach hang.
      * @param customerId CCCD cua khach hang. Duoc su dung de tim khach hang
      *                   trong ngan hang.
@@ -76,6 +77,7 @@ public class Bank {
     }
 
     /**
+     * TIEU CHI 3 NANG CAO:
      * Ham them account cho khach hang.
      * @param customerId: CCCD cua khach hang. Duoc su dung de tim kiem khach hang.
      * @param account: Them account neu tim thay khach hang.
