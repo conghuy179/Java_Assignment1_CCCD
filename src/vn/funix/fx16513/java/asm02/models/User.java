@@ -1,5 +1,8 @@
 package vn.funix.fx16513.java.asm02.models;
 
+
+import vn.funix.fx16513.java.asm02.util.Validations;
+
 /**
  * Class User: Chua thong tin nguoi dung cua he thong.
  * Field: name: ten nguoi dung.
@@ -17,7 +20,7 @@ public class User {
      */
     public User(String name, String customerID) {
         this.name = name;
-        this.customerID = customerID;
+        setCustomerID(customerID);
     }
 
     /**
@@ -34,18 +37,13 @@ public class User {
      * @param customerID: CCCD.
      */
     public void setCustomerID(String customerID) {
-            boolean kiemtraCccd;
-            do {
-                kiemtraCccd = isValidCccd(customerID);
-                // Neu ma CCCD khong hop le:
-                if (!kiemtraCccd) {
-                    System.out.println("So CCCD khong hop le. Vui long nhap lai.");
-                    // throws new Exception("So CCCD khong hop le. Vui long nhap lai.");
-                }
-            } while (!kiemtraCccd);
-            if (kiemtraCccd) {
-                this.customerID = customerID;
-            }
+        // if customer id is valid => allow it to set
+        // otherwise, throw an illegal argument exception
+        if (Validations.isValidCccd(customerID)) {
+            this.customerID = customerID;
+        } else {
+            throw new IllegalArgumentException("Invalid customerID: " + customerID);
+        }
     }
 
     /**
@@ -63,24 +61,4 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
-
-    public static boolean isValidNumericString(String s, int len) {
-        boolean result = true;
-        if (s.length() != len) {
-            return false;
-        }
-        for (int i = 0; i < len; i++) {
-            if (!Character.isDigit(s.charAt(i))) {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public static boolean isValidCccd(String cccd) {
-        return isValidNumericString(cccd, 12);
-    }
-
 }

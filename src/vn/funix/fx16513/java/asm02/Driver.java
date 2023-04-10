@@ -1,4 +1,9 @@
-package vn.funix.fx16513.java.asm02.models;
+package vn.funix.fx16513.java.asm02;
+
+import vn.funix.fx16513.java.asm02.models.Account;
+import vn.funix.fx16513.java.asm02.models.Bank;
+import vn.funix.fx16513.java.asm02.models.Customer;
+import vn.funix.fx16513.java.asm02.util.Validations;
 
 import java.util.Scanner;
 
@@ -40,12 +45,12 @@ public class Driver {
 
     /**
      * Ham in Menu.
-     * @param AUTHOR ten tac gia, o day la Phan Cong Huy.
-     * @param VERSION Ten phien ban, o day la ma SV: FX16513.
+     * @param author ten tac gia, o day la Phan Cong Huy.
+     * @param version Ten phien ban, o day la ma SV: FX16513.
      */
-    public void printMenu(String AUTHOR, String VERSION) {
+    public void printMenu(String author, String version) {
         System.out.println("+----------+-------------------------+----------+");
-        System.out.println("| NGAN HANG SO | " + AUTHOR + "@" + VERSION + "           |");
+        System.out.println("| NGAN HANG SO | " + author + "@" + version + "           |");
         System.out.println("+----------+-------------------------+----------+");
         System.out.println("| 1. Them khach hang                             |");
         System.out.println("| 2. Them tai khoan cho khach hang               |");
@@ -57,47 +62,6 @@ public class Driver {
         System.out.println("Chuc nang: ");
     }
 
-    /**
-     * Ham kiem tra day so hop le (su dung cho ca CCCD va ma so tai khoan).
-     * @param s: day so can kiem tra.
-     * @param len: Do dai quy dinh.
-     * @return Neu ko thoa man, return false. Neu thoa man, return true.
-     */
-    public static boolean isValidNumericString(String s, int len) {
-        boolean result = true;
-        if (s.length() != len) {
-            return false;
-        }
-        for (int i = 0; i < len; i++) {
-            if (!Character.isDigit(s.charAt(i))) {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Ham kiem tra CCCD co hop le hay khong bang cach su dung ham isValidNumericString voi bien len: 12.
-     * @param cccd: ma CCCD can kiem tra.
-     * @return Neu ko thoa man, return false. Neu thoa man, return true.
-     */
-    public static boolean isValidCccd(String cccd) {
-        return isValidNumericString(cccd, 12);
-    }
-
-    /**
-     * Ham kiem tra ma so tai khoan co hop le hay khong bang cach su dung ham isValidNumericString voi bien len: 6.
-     * @param accountNumber: Ma so tai khoan can kiem tra.
-     * @return Neu ko thoa man, return false. Neu thoa man, return true.
-     */
-    public static boolean isValidAccountNumber(String accountNumber) {
-        return isValidNumericString(accountNumber, 6);
-    }
-
-    /**
-     * Ham them khach hang.
-     */
     private void runAddCustomer() {
         // Nhap ten customer
         System.out.println("Nhap ten khach hang: ");
@@ -109,7 +73,7 @@ public class Driver {
         do {
             System.out.println("Nhap so CCCD:");
             cccd = sc.next();
-            kiemtraCccd = isValidCccd(cccd);
+            kiemtraCccd = Validations.isValidCccd(cccd);
             // Neu ma CCCD khong hop le:
             if (!kiemtraCccd) {
                 System.out.println("So CCCD khong hop le. Vui long nhap lai.");
@@ -133,7 +97,7 @@ public class Driver {
         do {
             System.out.println("Nhap CCCD khach hang: ");
             cccd = sc.next();
-            isValidId = isValidCccd(cccd);
+            isValidId = Validations.isValidCccd(cccd);
             if (!isValidId) {
                 System.out.println("So CCCD khong hop le. Vui long nhap lai.");
             }
@@ -146,7 +110,7 @@ public class Driver {
         do {
             System.out.println("Nhap ma STK gom 6 chu so:");
             accountNumber = sc.next();
-            isAccountNumberValid = isValidAccountNumber(accountNumber);
+            isAccountNumberValid = Validations.isValidAccountNumber(accountNumber);
             if (!isAccountNumberValid) {
                 System.out.println("Ma STK chi duoc bao gom cac chu so. Vui long nhap lai.");
             }
@@ -185,7 +149,7 @@ public class Driver {
         do {
             System.out.println("Nhap CCCD khach hang: ");
             cccd = sc.next();
-            isValidId = isValidCccd(cccd);
+            isValidId = Validations.isValidCccd(cccd);
             if (!isValidId) {
                 System.out.println("So CCCD khong hop le. Vui long nhap lai.");
             }
