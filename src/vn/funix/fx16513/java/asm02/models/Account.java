@@ -1,12 +1,15 @@
 package vn.funix.fx16513.java.asm02.models;
 
+import vn.funix.fx16513.java.asm03.util.ReportService;
+import vn.funix.fx16513.java.asm03.util.Withdraw;
+
 /**
  * Class Account chua thong tin quan ly tai khoan cua khach hang.
  * Field: accountNumber: So tai khoan khach hang, 6 chu so.
  *        balance:       So du tai khoan.
  *
  */
-public class Account {
+public class Account implements Withdraw, ReportService {
     private String accountNumber;
     private double balance;
 
@@ -66,5 +69,28 @@ public class Account {
      */
     public void toStringAccount() {
         System.out.println(accountNumber + "|                " + balance);
+    }
+
+    public String getAccountType() {
+        return "";
+    }
+
+    @Override
+    public void log(double amount) {
+
+    }
+
+    @Override
+    public boolean withdraw(double amount) {
+        if (isAccepted(amount)) {
+            balance = getBalance() - amount;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isAccepted(double amount) {
+        return false;
     }
 }

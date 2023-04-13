@@ -97,4 +97,17 @@ public class Customer extends User {
             System.out.printf("%d\t\t%s\t\t\t\t%,.2f\n", (i + 1), accounts.get(i).getAccountNumber(), accounts.get(i).getBalance());
         }
     }
+
+    public void withdraw(String accountNumber, double amount) {
+        // cac subclass se implement method nay
+    }
+
+    public Account searchAccount(String accountNumber) {
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accountNumber.equals(accounts.get(i).getAccountNumber())) {
+                return accounts.get(i);
+            }
+        }
+        return null;
+    }
 }
