@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="02b28e13-a9a4-4376-abc7-bf2ebfc704e7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm02/models/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm03/models/LoanAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm03/models/LoanAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm03/models/SavingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm03/models/SavingAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm03/util/Driver3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vn/funix/fx16513/java/asm03/util/Driver3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

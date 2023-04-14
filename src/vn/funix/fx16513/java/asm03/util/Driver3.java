@@ -122,6 +122,7 @@ public class Driver3 {
         boolean isAccountNumberValid;
         boolean isAccountNumberExisted;
         Customer selectedCustomer = digitalBank.searchCustomer(CUSTOMER_ID);
+        boolean isAmountAccepted;
 
         do {
             System.out.println("Nhap ma STK gom 6 chu so:");
@@ -142,7 +143,11 @@ public class Driver3 {
             if (amount < 0) {
                 System.out.println("So tien khong duoc nho hon 0 VND. Vui long nhap lai.");
             }
-        } while (amount < 0);
+            isAmountAccepted = selectedCustomer.searchAccount(accountNumber).isAccepted(amount);
+            if (!isAmountAccepted) {
+                System.out.println("So tien khong hop le. Vui long nhap lai.");
+            }
+        } while (amount < 0 || !isAmountAccepted);
 
         digitalBank.withdraw(CUSTOMER_ID, accountNumber, amount);
     }
