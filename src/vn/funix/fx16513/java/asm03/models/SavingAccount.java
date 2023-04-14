@@ -18,11 +18,25 @@ public class SavingAccount extends Account {
         super(accountNumber, balance);
     }
 
+    @Override
     public void log(double amount) {
-        System.out.println("This is log from ReportService");
+        System.out.println("+----------+-------------------------+----------+");
+        System.out.println("       BIEN LAI GIAO DICH SAVINGS");
+        System.out.println("NGAY G/D:          %28s%n");
+        System.out.println("ATM ID:          DIGITAL-BANK-ATM 2022");
+        System.out.printf("SO TK:                             %s\n", getAccountNumber());
+        System.out.printf("SO TIEN:                       %,.0fđ\n", amount);
+        System.out.printf("SO DU:                         %,.0fđ\n",getBalance());
+        System.out.printf("PHI + VAT:                     %,.0fđ\n",getFee(amount));
+        System.out.println("+----------+-------------------------+----------+");
     }
 
+    @Override
     public boolean withdraw(double amount) {
+        if (isAccepted(amount)) {
+            setBalance(getBalance() - getFee(amount) - amount);
+            return true;
+        }
         return false;
     }
 
@@ -31,7 +45,7 @@ public class SavingAccount extends Account {
         if (amount < 50_000) {
             return false;
         }
-        if (!isPremium() && amount > 5_000_000) {
+        if (!isPremium() && amount > SAVINGS_ACCOUNT_MAX_WITHDRAW) {
             return false;
         }
         if (getBalance() - amount < 50_000) {

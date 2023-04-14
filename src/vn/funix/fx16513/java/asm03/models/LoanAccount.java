@@ -24,28 +24,39 @@ public class LoanAccount extends Account {
     public void log(double amount) {
         System.out.println("+----------+-------------------------+----------+");
         System.out.println("       BIEN LAI GIAO DICH LOAN");
-        System.out.printf("NGAY G/D:          %28s%n", Utils.getDateTime());
+        System.out.println("NGAY G/D:          %28s%n");
+        System.out.println("ATM ID:          DIGITAL-BANK-ATM 2022");
+        System.out.printf("SO TK:                             %s\n", getAccountNumber());
+        System.out.printf("SO TIEN:                      %,.0fđ\n", amount);
+        System.out.printf("SO DU:                        %,.0fđ\n",getBalance());
+        System.out.printf("PHI + VAT:                    %,.0fđ\n",getFee(amount));
         System.out.println("+----------+-------------------------+----------+");
     }
     @Override
     public boolean withdraw(double amount) {
         if (isAccepted(amount)) {
-            double fee = isPremium()? LOAN_ACCOUNT_WITHDRAW_PREMIUM_FEE * amount : LOAN_ACCOUNT_WITHDRAW_FEE * amount;
-            setBalance(getBalance() - fee - amount);
+            setBalance(getBalance() - getFee(amount) - amount);
+           // log(amount);
             return true;
         }
         return false;
     }
+
     @Override
     public boolean isAccepted(double amount) {
         if (amount > LOAN_ACCOUNT_MAX_BALANCE) {
             return false;
         }
-        double fee = isPremium()? LOAN_ACCOUNT_WITHDRAW_PREMIUM_FEE * amount : LOAN_ACCOUNT_WITHDRAW_FEE * amount;
-        if (getBalance() - fee - amount > 50_000) {
+        if (getBalance() - getFee(amount) - amount < 50_000) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public double getFee(double amount) {
+        double fee = isPremium() ? LOAN_ACCOUNT_WITHDRAW_PREMIUM_FEE * amount : LOAN_ACCOUNT_WITHDRAW_FEE * amount;
+        return fee;
     }
 
     @Override

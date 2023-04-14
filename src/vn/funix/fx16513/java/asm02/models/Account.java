@@ -75,6 +75,10 @@ public class Account implements Withdraw, ReportService {
         return "";
     }
 
+    public double getFee(double amount) {
+        return 0;
+    }
+
     @Override
     public void log(double amount) {
 

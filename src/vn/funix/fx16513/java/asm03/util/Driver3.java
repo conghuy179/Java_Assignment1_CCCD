@@ -79,34 +79,25 @@ public class Driver3 {
     }
 
     public void runAddAccount(int choiceAccountType) {
-        String cccd;
-        boolean isValidId;
-        boolean isCustomerExisted;
         boolean isAccountNumberValid;
+        boolean isAccountNumberExisted;
         String accountNumber;
         double balance;
-
-        do {
-            System.out.println("Nhap CCCD khach hang can them tai khoan: ");
-            cccd = scanner.next();
-            isValidId = Validations.isValidCccd(cccd);
-            if (!isValidId) {
-                System.out.println("So CCCD khong hop le. Vui long nhap lai.");
-            }
-            isCustomerExisted = digitalBank.isCustomerExisted(cccd);
-            if (!isCustomerExisted) {
-                System.out.println("Khach hang khong ton tai. Vui long nhap lai.");
-            }
-        } while (!isValidId || !isCustomerExisted);
+        Customer selectedCustomer = digitalBank.searchCustomer(CUSTOMER_ID);
 
         do {
             System.out.println("Nhap ma STK gom 6 chu so:");
             accountNumber = scanner.next();
             isAccountNumberValid = Validations.isValidAccountNumber(accountNumber);
+
             if (!isAccountNumberValid) {
                 System.out.println("Ma STK chi duoc bao gom cac chu so. Vui long nhap lai.");
             }
-        } while (!isAccountNumberValid);
+            isAccountNumberExisted = selectedCustomer.isAccountExisted(accountNumber);
+            if (isAccountNumberExisted) {
+                System.out.println("Ma STK da ton tai. Vui long nhap lai.");
+            }
+        } while (!isAccountNumberValid || isAccountNumberExisted);
 
         do {
             System.out.println("Nhap so du:");
@@ -119,16 +110,18 @@ public class Driver3 {
         Account newAccount;
         if (choiceAccountType == CHOICE_ADD_SAVING_ACCOUNT) {
             newAccount = new SavingAccount(accountNumber, balance);
-            digitalBank.addAccount(cccd, newAccount);
+            digitalBank.addAccount(CUSTOMER_ID, newAccount);
         } else if (choiceAccountType == CHOICE_ADD_LOAN_ACCOUNT) {
             newAccount = new LoanAccount(accountNumber, balance);
-            digitalBank.addAccount(cccd, newAccount);
+            digitalBank.addAccount(CUSTOMER_ID, newAccount);
         }
     }
     private void runWithdraw() {
         String accountNumber;
         double amount;
         boolean isAccountNumberValid;
+        boolean isAccountNumberExisted;
+        Customer selectedCustomer = digitalBank.searchCustomer(CUSTOMER_ID);
 
         do {
             System.out.println("Nhap ma STK gom 6 chu so:");
@@ -137,7 +130,11 @@ public class Driver3 {
             if (!isAccountNumberValid) {
                 System.out.println("Ma STK chi duoc bao gom cac chu so. Vui long nhap lai.");
             }
-        } while (!isAccountNumberValid);
+            isAccountNumberExisted = selectedCustomer.isAccountExisted(accountNumber);
+            if (!isAccountNumberExisted) {
+                System.out.println("Ma STK khong ton tai. Vui long nhap lai.");
+            }
+        } while (!isAccountNumberValid || !isAccountNumberExisted);
 
         do {
             System.out.println("Nhap so tien muon rut: ");
