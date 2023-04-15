@@ -3,10 +3,7 @@ package vn.funix.fx16513.java.asm03.util;
 import vn.funix.fx16513.java.asm02.models.Account;
 import vn.funix.fx16513.java.asm02.models.Customer;
 import vn.funix.fx16513.java.asm02.util.Validations;
-import vn.funix.fx16513.java.asm03.models.DigitalBank;
-import vn.funix.fx16513.java.asm03.models.DigitalCustomer;
-import vn.funix.fx16513.java.asm03.models.LoanAccount;
-import vn.funix.fx16513.java.asm03.models.SavingAccount;
+import vn.funix.fx16513.java.asm03.models.*;
 
 import java.util.Scanner;
 
@@ -82,6 +79,7 @@ public class Driver3 {
     public void runAddAccount(int choiceAccountType) {
         boolean isAccountNumberValid;
         boolean isAccountNumberExisted;
+        boolean ok = true;
         String accountNumber;
         double balance;
         Customer selectedCustomer = digitalBank.searchCustomer(CUSTOMER_ID);
@@ -108,7 +106,7 @@ public class Driver3 {
             }
         } while (balance < 0);
 
-        Account newAccount;
+        Account newAccount = null;
         if (choiceAccountType == CHOICE_ADD_SAVING_ACCOUNT) {
             newAccount = new SavingAccount(accountNumber, balance);
             digitalBank.addAccount(CUSTOMER_ID, newAccount);
@@ -116,6 +114,7 @@ public class Driver3 {
             newAccount = new LoanAccount(accountNumber, balance);
             digitalBank.addAccount(CUSTOMER_ID, newAccount);
         }
+        newAccount.addNewTransaction(new Transaction(accountNumber, balance, true));
     }
 
     private void runWithdraw() {
@@ -155,6 +154,7 @@ public class Driver3 {
     }
 
     private void runTransactionHistory() {
-
+        Customer selectedCustomer = digitalBank.searchCustomer(CUSTOMER_ID);
+        selectedCustomer.printTransactionHistory();
     }
 }

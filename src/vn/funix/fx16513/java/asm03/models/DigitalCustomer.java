@@ -21,15 +21,17 @@ public class DigitalCustomer extends Customer {
 
     @Override
     public void withdraw(String accountNumber, double amount) {
+        boolean ok = false;
         if (!isAccountExisted(accountNumber)) {
             System.out.println("Tai khoan khong ton tai.");
         } else {
             Account account = searchAccount(accountNumber);
-            boolean ok = account.withdraw(amount);
+            ok = account.withdraw(amount);
             if (ok) {
                 account.log(amount);
             }
         }
+        searchAccount(accountNumber).addNewTransaction(new Transaction(accountNumber, amount, ok));
     }
 
     @Override
@@ -49,4 +51,5 @@ public class DigitalCustomer extends Customer {
                     getAccounts().get(i).getBalance());
         }
     }
+
 }

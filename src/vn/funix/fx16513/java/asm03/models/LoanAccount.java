@@ -28,15 +28,15 @@ public class LoanAccount extends Account {
         System.out.println("ATM ID:          DIGITAL-BANK-ATM 2022");
         System.out.printf("SO TK:                             %s\n", getAccountNumber());
         System.out.printf("SO TIEN:                      %,.0fđ\n", amount);
-        System.out.printf("SO DU:                        %,.0fđ\n",getBalance());
-        System.out.printf("PHI + VAT:                    %,.0fđ\n",getFee(amount));
+        System.out.printf("SO DU:                        %,.0fđ\n", getBalance());
+        System.out.printf("PHI + VAT:                    %,.0fđ\n", getFee(amount));
         System.out.println("+----------+-------------------------+----------+");
     }
+
     @Override
     public boolean withdraw(double amount) {
         if (isAccepted(amount)) {
             setBalance(getBalance() - getFee(amount) - amount);
-           // log(amount);
             return true;
         }
         return false;
