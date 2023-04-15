@@ -3,6 +3,11 @@ package vn.funix.fx16513.java.asm02.models;
 import vn.funix.fx16513.java.asm03.util.ReportService;
 import vn.funix.fx16513.java.asm03.util.Withdraw;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Class Account chua thong tin quan ly tai khoan cua khach hang.
  * Field: accountNumber: So tai khoan khach hang, 6 chu so.
@@ -79,6 +84,12 @@ public class Account implements Withdraw, ReportService {
         return 0;
     }
 
+    public static String getDateTime() {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date today = Calendar.getInstance().getTime();
+        return df.format(today);
+    }
+
     @Override
     public void log(double amount) {
 
@@ -98,3 +109,4 @@ public class Account implements Withdraw, ReportService {
         return false;
     }
 }
+

@@ -22,7 +22,7 @@ public class SavingAccount extends Account {
     public void log(double amount) {
         System.out.println("+----------+-------------------------+----------+");
         System.out.println("       BIEN LAI GIAO DICH SAVINGS");
-        System.out.println("NGAY G/D:          %28s%n");
+        System.out.println("NGAY G/D:          " + getDateTime());
         System.out.println("ATM ID:          DIGITAL-BANK-ATM 2022");
         System.out.printf("SO TK:                             %s\n", getAccountNumber());
         System.out.printf("SO TIEN:                       %,.0fđ\n", amount);

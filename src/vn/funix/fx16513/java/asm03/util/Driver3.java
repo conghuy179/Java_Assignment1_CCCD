@@ -45,10 +45,11 @@ public class Driver3 {
                 runAddAccount(CHOICE_ADD_LOAN_ACCOUNT);
             } else if (selection == CHOICE_WITHDRAW) {
                 runWithdraw();
+            } else if (selection == CHOICE_TRANSACTION_HISTORY) {
+                runTransactionHistory();
             }
         } while (selection != CHOICE_EXIT);
     }
-
 
 
     /**
@@ -116,6 +117,7 @@ public class Driver3 {
             digitalBank.addAccount(CUSTOMER_ID, newAccount);
         }
     }
+
     private void runWithdraw() {
         String accountNumber;
         double amount;
@@ -152,5 +154,7 @@ public class Driver3 {
         digitalBank.withdraw(CUSTOMER_ID, accountNumber, amount);
     }
 
+    private void runTransactionHistory() {
 
+    }
 }
