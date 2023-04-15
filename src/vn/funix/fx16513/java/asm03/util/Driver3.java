@@ -106,7 +106,7 @@ public class Driver3 {
             }
         } while (balance < 0);
 
-        Account newAccount = null;
+        Account newAccount;
         if (choiceAccountType == CHOICE_ADD_SAVING_ACCOUNT) {
             newAccount = new SavingAccount(accountNumber, balance);
             digitalBank.addAccount(CUSTOMER_ID, newAccount);
@@ -114,7 +114,6 @@ public class Driver3 {
             newAccount = new LoanAccount(accountNumber, balance);
             digitalBank.addAccount(CUSTOMER_ID, newAccount);
         }
-        newAccount.addNewTransaction(new Transaction(accountNumber, balance, true));
     }
 
     private void runWithdraw() {

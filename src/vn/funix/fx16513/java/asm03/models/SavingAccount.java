@@ -16,6 +16,7 @@ public class SavingAccount extends Account {
      */
     public SavingAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
+        addNewTransaction(new Transaction(accountNumber, balance, true));
     }
 
     @Override
