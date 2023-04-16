@@ -4,6 +4,7 @@ import vn.funix.fx16513.java.asm02.models.Account;
 
 /**
  * Class quan ly tai khoan tiet kiem cua khach hang
+ * ke thua class Account
  */
 public class SavingAccount extends Account {
     public static final double SAVINGS_ACCOUNT_MAX_WITHDRAW = 5_000_000;
@@ -16,9 +17,14 @@ public class SavingAccount extends Account {
      */
     public SavingAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
-        addNewTransaction(new Transaction(accountNumber, balance, true));
+        addNewTransaction(new Transaction(accountNumber, balance, true, false));
     }
 
+    /**
+     * TIEU CHI 5:
+     * Ham Log de in bien lai giao dich Savings
+     * @param amount: so tien moi khi rut
+     */
     @Override
     public void log(double amount) {
         System.out.println("+----------+-------------------------+----------+");
@@ -32,15 +38,30 @@ public class SavingAccount extends Account {
         System.out.println("+----------+-------------------------+----------+");
     }
 
+    /**
+     * TIEU CHI 6:
+     * Ham withdraw duoc override theo yeu cau cua Saving Account
+     * @param amount: so tien rut ra
+     * @return: True neu rut tien thanh cong, false neu that bai.
+     */
     @Override
     public boolean withdraw(double amount) {
+        boolean status = false;
         if (isAccepted(amount)) {
             setBalance(getBalance() - getFee(amount) - amount);
-            return true;
+            status = true;
+        } else {
+            status = false;
         }
-        return false;
+        addNewTransaction(new Transaction(getAccountNumber(), amount, status, true));
+        return status;
     }
 
+    /**
+     * Ham isAccepted duoc override theo yeu cau cua Saving Account
+     * @param amount: so tien muon rut
+     * @return: True neu thoa man dieu kien rut tien, false neu that bai
+     */
     @Override
     public boolean isAccepted(double amount) {
         if (amount < 50_000) {
@@ -58,6 +79,10 @@ public class SavingAccount extends Account {
         return true;
     }
 
+    /**
+     * Ham xac dinh loai tai khoan duoc override
+     * @return tra ve SAVINGS
+     */
     @Override
     public String getAccountType() {
         return "SAVINGS";

@@ -112,10 +112,20 @@ public class Customer extends User {
         }
     }
 
+    /**
+     * Ham rut tien, duoc tao ra de subclass override
+     * @param accountNumber: Ma Tk khach hang
+     * @param amount: So tien muon rut
+     */
     public void withdraw(String accountNumber, double amount) {
-        // cac subclass se implement method nay
+        // cac subclass se override method nay
     }
 
+    /**
+     * Ham tim tai khoan dua tren Ma TK
+     * @param accountNumber: Ma TK
+     * @return: Tai khoan neu Ma TK ton tai, null neu ma TK khong ton tai
+     */
     public Account searchAccount(String accountNumber) {
         for (int i = 0; i < accounts.size(); i++) {
             if (accountNumber.equals(accounts.get(i).getAccountNumber())) {
@@ -125,6 +135,11 @@ public class Customer extends User {
         return null;
     }
 
+    /**
+     * TIEU CHI 2 NANG CAO
+     * Ham in lich su giao dich theo khach hang
+     * Gom: Ma giao dich, ma TK, so tien, thoi gian giao dich
+     */
     public void printTransactionHistory() {
         System.out.println("+----------+-------------------------+----------+");
         System.out.println("|LICH SU GIAO DICH                              |");
@@ -133,9 +148,13 @@ public class Customer extends User {
         for (int i = 0; i < getAccounts().size(); i++) {
             for (int j = 0; j < getAccounts().get(i).getTransactionHistory().size(); j++) {
                 Transaction transaction = getAccounts().get(i).getTransactionHistory().get(j);
+                double amount = transaction.getTransactionAmount();
+                amount = transaction.getIsWithdrawal()
+                        ? -amount
+                        : amount;
                 System.out.printf("%s | %.0f | %s\n",
                         transaction.getTransactionAccountNumber(),
-                        transaction.getTransactionAmount(),
+                        amount,
                         transaction.getTransactionTime());
             }
         }

@@ -1,12 +1,18 @@
-package vn.funix.fx16513.java.asm03.util;
+package vn.funix.fx16513.java.asm03;
 
 import vn.funix.fx16513.java.asm02.models.Account;
 import vn.funix.fx16513.java.asm02.models.Customer;
 import vn.funix.fx16513.java.asm02.util.Validations;
-import vn.funix.fx16513.java.asm03.models.*;
+import vn.funix.fx16513.java.asm03.models.DigitalBank;
+import vn.funix.fx16513.java.asm03.models.DigitalCustomer;
+import vn.funix.fx16513.java.asm03.models.LoanAccount;
+import vn.funix.fx16513.java.asm03.models.SavingAccount;
 
 import java.util.Scanner;
 
+/**
+ * Class Driver3: Thuc hien nhiem vu dieu khien cac class theo yeu cau
+ */
 public class Driver3 {
     public static final int CHOICE_SHOW_INFO_CUSTOMER = 1;
     public static final int CHOICE_ADD_SAVING_ACCOUNT = 2;
@@ -14,8 +20,6 @@ public class Driver3 {
     public static final int CHOICE_WITHDRAW = 4;
     public static final int CHOICE_TRANSACTION_HISTORY = 5;
     public static final int CHOICE_EXIT = 0;
-    private static final int EXIT_ERROR_CODE = -1;
-
     private static final String CUSTOMER_ID = "001095013737";
     private static final String CUSTOMER_NAME = "FUNIX";
     private static final String AUTHOR = "PHAN CONG HUY";
@@ -29,6 +33,11 @@ public class Driver3 {
         this.scanner = scanner;
     }
 
+    /**
+     * TIEU CHI 4:
+     * Ham run: Thuc hien yeu cau: Tao vong lap in Menu va cho phep khach hang
+     * nhap lua chon. Trong do co them tai khoan saving va loan
+     */
     public void run() {
         digitalBank.addCustomer(new DigitalCustomer(CUSTOMER_NAME, CUSTOMER_ID));
         do {
@@ -154,6 +163,8 @@ public class Driver3 {
 
     private void runTransactionHistory() {
         Customer selectedCustomer = digitalBank.searchCustomer(CUSTOMER_ID);
-        selectedCustomer.printTransactionHistory();
+        if (selectedCustomer != null) {
+            selectedCustomer.printTransactionHistory();
+        }
     }
 }

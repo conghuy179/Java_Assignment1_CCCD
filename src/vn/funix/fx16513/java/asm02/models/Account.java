@@ -116,11 +116,15 @@ public class Account implements Withdraw, ReportService {
 
     @Override
     public boolean withdraw(double amount) {
+        boolean status = false;
         if (isAccepted(amount)) {
             balance = getBalance() - amount;
-            return true;
+            status = true;
+        } else {
+            status = false;
         }
-        return false;
+        addNewTransaction(new Transaction(accountNumber, amount, status, true));
+        return status;
     }
 
     @Override

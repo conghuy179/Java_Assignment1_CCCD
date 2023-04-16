@@ -2,10 +2,11 @@ package vn.funix.fx16513.java.asm03.models;
 
 import vn.funix.fx16513.java.asm02.models.Account;
 import vn.funix.fx16513.java.asm02.models.Customer;
-import vn.funix.fx16513.java.asm03.util.Withdraw;
 
 /**
- * Class quan ly thong tin khach hang tiem nang
+ * TIEU CHI 3:
+ * Class DigitalCustomer quan ly thong tin khach hang tiem nang
+ * ke thua class Customer
  */
 
 public class DigitalCustomer extends Customer {
@@ -19,6 +20,12 @@ public class DigitalCustomer extends Customer {
         super(name, customerID);
     }
 
+    /**
+     * TIEU CHI 3:
+     * Method withdraw: cho phep khach hang rut tien theo tai khoan
+     * @param accountNumber: ma TK cua khach hang
+     * @param amount: So tien khach hang muon rut
+     */
     @Override
     public void withdraw(String accountNumber, double amount) {
         boolean ok = false;
@@ -31,9 +38,11 @@ public class DigitalCustomer extends Customer {
                 account.log(amount);
             }
         }
-        searchAccount(accountNumber).addNewTransaction(new Transaction(accountNumber, amount, ok));
     }
 
+    /**
+     * Ham hien thi thong tin theo loai tai khoan
+     */
     @Override
     public void displayInformation() {
         String customerType = isPremium() ? "Premium" : "Normal";
